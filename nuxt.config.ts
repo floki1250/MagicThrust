@@ -12,6 +12,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: {
+    apiKey: process.env.GEMINI_APIKEY,
+  },
   css: ["@/assets/main.scss"],
   colorMode: {
     preference: "light", // default value of $colorMode.preference
