@@ -1,30 +1,30 @@
-import { content } from "./../../.nuxt/types/tailwind.config.d";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
   const API_KEY = config.apiKey;
+  if (!API_KEY) {
+    throw new Error("API_KEY is not defined");
+  }
+
   const body = await readBody(event);
+  if (!body || !body.prompt) {
+    throw new Error("Invalid request body");
+  }
+
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-  const prompt = body.prompt;
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.candidates[0].content.parts[0].text;
-  const data = text.replace("```json", "");
-  // Extracting the JSON array part
-  const jsonStartIndex = data.indexOf("[");
-  const jsonEndIndex = data.lastIndexOf("]") + 1;
-  const jsonString = data.substring(jsonStartIndex, jsonEndIndex);
 
-  // Parsing the JSON string into a JavaScript object
-  let jsonData;
   try {
-    jsonData = JSON.parse(jsonString);
+    const result = await model.generateContent(body.prompt);
+    const response = result.response as any;
+    const text = response?.candidates[0]?.content?.parts[0]?.text;
+    const jsonStartIndex = text.indexOf("[");
+    const jsonEndIndex = text.lastIndexOf("]") + 1;
+    const jsonString = text.substring(jsonStartIndex, jsonEndIndex);
+    const jsonData = JSON.parse(jsonString);
+    return { jsonData };
   } catch (error) {
-    console.error("Error parsing JSON:", error);
+    console.error("Error generating JSON:", error);
+    throw error;
   }
-  return {
-    message: "Received the body!",
-    data: jsonData,
-  };
 });

@@ -10,14 +10,14 @@
                 <br>
                 <div class="flex gap-4">
                     <div
-                        class="hover:shadow-lg hover:bg-gradient-to-tr from-[#ceb2ce] to-[#467fff] w-full p-0.5 rounded-full transition-all duration-500 ease-in-out text-gray-400 hover:text-gray-700 hover:dark:text-white">
+                        class="hover:shadow-lg focus:bg-gradient-to-tr hover:bg-gradient-to-tr from-[#ceb2ce] to-[#467fff] w-full p-0.5 rounded-full transition-all duration-500 ease-in-out text-gray-400 hover:text-gray-700 hover:dark:text-white">
                         <div class="p-2 flex gap-2 bg-gray-50 min-w-96 w-full rounded-full  dark:bg-gray-800">
                             <UIcon name="i-heroicons-sparkles-solid" class="text-2xl " />
-                            <input type="text" placeholder="Example: Generate a list of 10 random users in Json"
+                            <input type="text" placeholder="Example: Generate a 10 random users with avatars"
                                 v-model="prompt"
                                 class="  bg-gray-50 dark:bg-gray-800 text-gray-950 dark:text-gray-400 rounded-full w-full  outline-none pl-2">
-
                         </div>
+
                     </div>
 
                     <div
@@ -25,13 +25,16 @@
                         <div
                             class="flex gap-2 w-fit rounded-full bg-gray-50 dark:bg-gray-800  font-semibold text-gray-400 hover:text-black hover:dark:text-white  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out group">
 
-                            <button @click="generateJson()">
+                            <button @click="generateJson()" v-if="!loading">
                                 <div class="flex gap-2">
                                     <UIcon name="i-heroicons-bolt-solid" class="text-xl  pt-4" />
                                     <span>Generate
                                         Json</span>
                                 </div>
                             </button>
+                            <div v-else>
+                                <Loader />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -46,11 +49,8 @@
                         class="hover:text-indigo-500 rounded-full  border-2 hover:border-indigo-400 border-transparent p-2">Products</button>
                     <button @click="overwriteData(users)"
                         class="hover:text-[#ceb2ce] rounded-full  border-2 hover:border-[#ceb2ce] border-transparent p-2">Users</button>
-
                 </div>
-
             </div>
-
             <div>
                 <button @click="createServer()"
                     class="flex justify-start hover:shadow-lg w-fit rounded-full bg-gray-50 dark:bg-gray-800  font-semibold text-gray-400 hover:text-amber-500 border-2 border-gray-50 dark:border-gray-900 dark:hover:border-amber-500 hover:border-amber-500  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out">
@@ -78,7 +78,7 @@
 import MonacoEditor from 'vue-monaco-cdn'
 import { kv } from "@vercel/kv";
 
-
+const loading = ref(false)
 const data = ref()
 const products = {
     "products": [
@@ -236,14 +236,15 @@ function generateRandomString (): string {
     return result;
 }
 async function generateJson () {
-    const result = await $fetch("/api/ai", {
+    loading.value = true
+    const datares = await $fetch("/api/ai", {
         method: "POST",
         body: {
-            prompt: prompt.value
+            prompt: prompt.value + " in Json"
         }
     })
-    console.log(result.data)
-    overwriteData(result.data)
+    overwriteData(datares)
+    loading.value = false
 }
 async function createServer () {
     const serverCode = generateRandomString();
