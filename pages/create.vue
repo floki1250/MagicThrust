@@ -14,7 +14,7 @@
                         <div class="p-2 flex gap-2 bg-gray-50 min-w-96 w-full rounded-full  dark:bg-gray-800">
                             <UIcon name="i-heroicons-sparkles-solid" class="text-2xl " />
                             <input type="text" placeholder="Example: Generate a 10 random users with avatars"
-                                v-model="prompt"
+                                v-model="prompt" :disabled="loading"
                                 class="  bg-gray-50 dark:bg-gray-800 text-gray-950 dark:text-gray-400 rounded-full w-full  outline-none pl-2">
                         </div>
 
@@ -243,11 +243,12 @@ async function generateJson () {
             prompt: prompt.value + " in Json"
         }
     })
+    console.log(datares)
     overwriteData(datares)
     loading.value = false
 }
 async function createServer () {
-    const serverCode = generateRandomString();
+    const serverCode = "MagicThrust_" + generateRandomString();
     console.log(serverCode, data.value)
     await kv.set(serverCode, data.value, { ex: 60 * 60 * 24 * 15 });
     await navigateTo(`/api/${serverCode}`, {

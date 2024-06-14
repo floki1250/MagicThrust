@@ -20,5 +20,5 @@ export default defineNuxtConfig({
     preference: "light", // default value of $colorMode.preference
   },
   devtools: { enabled: true },
-  modules: ["@nuxt/ui"],
+  modules: ["@nuxt/ui", "@nuxt/test-utils"],
 });

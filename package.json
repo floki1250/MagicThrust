@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.12.0",
+    "@nuxt/test-utils": "^3.13.1",
     "@vercel/kv": "^1.0.1",
     "vue-monaco-cdn": "^2.0.3"
   }

@@ -21,6 +21,7 @@ export default defineEventHandler(async (event) => {
     const jsonStartIndex = text.indexOf("[");
     const jsonEndIndex = text.lastIndexOf("]") + 1;
     const jsonString = text.substring(jsonStartIndex, jsonEndIndex);
+    console.log(jsonString);
     const jsonData = JSON.parse(jsonString);
     return { jsonData };
   } catch (error) {
