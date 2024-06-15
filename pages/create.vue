@@ -1,8 +1,9 @@
 <template>
-    <div class="flex justify-between items-center text-center  ">
+    <div class="flex gap-4 justify-between items-center text-center flex-col lg:flex-row ">
         <div class="lg:w-1/2">
             <div>
-                <h1 class="text-4xl text-left font-RaMono text-gray-600 dark:text-gray-50">Describe Your Data and
+                <h1 class="text-3xl lg:text-4xl text-left font-RaMono text-gray-600 dark:text-gray-50">Describe Your
+                    Data and
                     <br><span
                         class="font-bold  bg-gradient-to-r from-[#467fff] to-[#ceb2ce] bg-clip-text text-transparent">
                         Gemini AI✨ </span> Will Generate JSON for You
@@ -11,7 +12,7 @@
                 <div class="flex gap-4">
                     <div
                         class="hover:shadow-lg focus:bg-gradient-to-tr hover:bg-gradient-to-tr from-[#ceb2ce] to-[#467fff] w-full p-0.5 rounded-full transition-all duration-500 ease-in-out text-gray-400 hover:text-gray-700 hover:dark:text-white">
-                        <div class="p-2 flex gap-2 bg-gray-50 min-w-96 w-full rounded-full  dark:bg-gray-800">
+                        <div class="p-2 flex gap-2 bg-gray-50 lg:min-w-96 w-full rounded-full  dark:bg-gray-800">
                             <UIcon name="i-heroicons-sparkles-solid" class="text-2xl " />
                             <input type="text" placeholder="Example: Generate a 10 random users with avatars"
                                 v-model="prompt" :disabled="loading"
@@ -76,7 +77,7 @@
 <script setup lang="ts">
 // @ts-ignore
 import MonacoEditor from 'vue-monaco-cdn'
-import { kv } from "@vercel/kv";
+
 
 const loading = ref(false)
 const data = ref()
@@ -226,15 +227,7 @@ const prompt = ref("");
 function overwriteData (json: any) {
     editor.value.getMonaco().setValue(JSON.stringify(json, null, 2))
 }
-function generateRandomString (): string {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let result = '';
-    for (let i = 0; i < 3; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        result += characters[randomIndex];
-    }
-    return result;
-}
+
 async function generateJson () {
     loading.value = true
     const datares = await $fetch("/api/ai", {
@@ -248,9 +241,13 @@ async function generateJson () {
     loading.value = false
 }
 async function createServer () {
-    const serverCode = "MagicThrust_" + generateRandomString();
-    console.log(serverCode, data.value)
-    await kv.set(serverCode, data.value, { ex: 60 * 60 * 24 * 15 });
+    const serverCode = await $fetch("/api/createServer", {
+        method: "POST",
+        body: {
+            data: data.value
+        }
+    })
+    console.log(serverCode)
     await navigateTo(`/api/${serverCode}`, {
         external: false,
         open: {

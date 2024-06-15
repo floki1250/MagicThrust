@@ -15,6 +15,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     apiKey: process.env.GEMINI_APIKEY,
   },
+  routeRules: {
+    "/api/*": { cors: true },
+  },
   css: ["@/assets/main.scss"],
   colorMode: {
     preference: "light", // default value of $colorMode.preference
