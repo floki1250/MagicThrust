@@ -3,7 +3,6 @@
         class=" blur-blob absolute top-52 left-1 md:top-20 md:left-50 lg:top-20 lg:left-4 bg-gradient-to-r from-[#467fff] dark:from-indigo-800 to-[#c980c9] dark:to-[#c980c9]  w-60 h-60 md:w-80 md:h-80 sm:w-60 sm:h-60 lg:w-96 lg:h-96">
     </div>
     <div class="flex justify-center items-center text-center gap-8 flex-col">
-        <NuxtLink to="/test">test</NuxtLink>
         <div class="px-8 text-6xl py-2">
             <h1
                 class="font-montserrat font-bold  bg-gradient-to-r from-[#467fff] to-[#c980c9] bg-clip-text text-transparent">
