@@ -5,7 +5,6 @@ export default defineEventHandler((event) => {
     process.env.NODE_ENV === "development"
       ? ["http://localhost:3000"]
       : ["https://magicthrust.vercel.app"];
-
   if (allowedOrigins.includes(origin)) {
     event.node.res.setHeader("Access-Control-Allow-Origin", origin);
     event.node.res.setHeader(
