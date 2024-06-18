@@ -5,13 +5,13 @@
                 <h1 class="text-3xl lg:text-4xl text-left font-RaMono text-gray-600 dark:text-gray-50">Describe Your
                     Data and
                     <br><span
-                        class="font-bold  bg-gradient-to-r from-[#467fff] to-[#ceb2ce] bg-clip-text text-transparent">
+                        class="font-bold  bg-gradient-to-r from-[#467fff] to-[#c980c9] bg-clip-text text-transparent">
                         Gemini AI✨ </span> Will Generate JSON for You
                 </h1>
                 <br>
                 <div class="flex gap-4">
                     <div
-                        class="hover:shadow-lg focus:bg-gradient-to-tr hover:bg-gradient-to-tr from-[#ceb2ce] to-[#467fff] w-full p-0.5 rounded-full transition-all duration-500 ease-in-out text-gray-400 hover:text-gray-700 hover:dark:text-white">
+                        class="hover:shadow-lg focus:bg-gradient-to-tr hover:bg-gradient-to-tr from-[#c980c9] to-[#467fff] w-full p-0.5 rounded-full transition-all duration-500 ease-in-out text-gray-400 hover:text-gray-700 hover:dark:text-white">
                         <div class="p-2 flex gap-2 bg-gray-50 lg:min-w-96 w-full rounded-full  dark:bg-gray-800">
                             <UIcon name="i-heroicons-sparkles-solid" class="text-2xl " />
                             <input type="text" placeholder="Example: Generate a 10 random users with avatars"
@@ -22,7 +22,7 @@
                     </div>
 
                     <div
-                        class="hover:shadow-lg hover:bg-gradient-to-r from-[#ceb2ce] to-[#467fff] border-1 border-gray-100 w-fit p-0.5 rounded-full  transition-all duration-500 ease-in-out">
+                        class="hover:shadow-lg hover:bg-gradient-to-r from-[#c980c9] to-[#467fff] border-1 border-gray-100 w-fit p-0.5 rounded-full  transition-all duration-500 ease-in-out">
                         <div
                             class="flex gap-2 w-fit rounded-full bg-gray-50 dark:bg-gray-800  font-semibold text-gray-400 hover:text-black hover:dark:text-white  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out group">
 
@@ -45,11 +45,15 @@
                 class="bg-gray-50 dark:bg-gray-800 border dark:border-gray-900 border-gray-100 p-4 rounded-xl text-md text-left font-RaMono text-gray-600 dark:text-gray-50 my-4">
                 <h2>Json Examples :</h2>
 
-                <div class="flex gap-4 text-left ">
+                <div class="grid gap-4 text-left grid-flow-row grow grid-cols-2 ">
                     <button @click="overwriteData(products)"
                         class="hover:text-indigo-500 rounded-full  border-2 hover:border-indigo-400 border-transparent p-2">Products</button>
                     <button @click="overwriteData(users)"
-                        class="hover:text-[#ceb2ce] rounded-full  border-2 hover:border-[#ceb2ce] border-transparent p-2">Users</button>
+                        class="hover:text-[#c980c9] rounded-full  border-2 hover:border-[#c980c9] border-transparent p-2">Users</button>
+                    <button @click="overwriteData(employees)"
+                        class="hover:text-indigo-500 rounded-full  border-2 hover:border-indigo-400 border-transparent p-2">Employees</button>
+                    <button @click="overwriteData(students)"
+                        class="hover:text-[#c980c9] rounded-full  border-2 hover:border-[#c980c9] border-transparent p-2">students</button>
                 </div>
             </div>
             <div>
@@ -63,7 +67,7 @@
             </div>
         </div>
         <div class=" h-full flex text-left justify-center items-center lg:w-1/2">
-            <div class=" shadow-2xl w-fit p-1 bg-gradient-to-r from-[#ceb2ce] to-[#467fff] rounded-lg">
+            <div class=" shadow-2xl w-fit p-1 bg-gradient-to-r from-[#c980c9] to-[#467fff] rounded-lg">
                 <div class="p-2 rounded-lg  bg-white dark:bg-[#1e1e1e] border border-white dark:border-gray-800">
                     <ClientOnly>
                         <monaco-editor ref="editor" class=" min-w-96 min-h-96 w-full" v-model="data" language="json"
@@ -216,6 +220,174 @@ const users = {
             "name": "Jack Thomas",
             "email": "jack.thomas@example.com",
             "avatar": "https://randomuser.me/api/portraits/men/10.jpg"
+        }
+    ]
+}
+const employees = {
+    "employees": [
+        {
+            "id": 1,
+            "job": "Software Engineer",
+            "role": "Frontend Developer",
+            "name": "Alice Johnson",
+            "email": "alice.johnson@example.com",
+            "address": "123 Main St, Anytown, CA 12345"
+        },
+        {
+            "id": 2,
+            "job": "Data Scientist",
+            "role": "Machine Learning Engineer",
+            "name": "Bob Williams",
+            "email": "bob.williams@example.com",
+            "address": "456 Oak Ave, Springfield, IL 62701"
+        },
+        {
+            "id": 3,
+            "job": "Project Manager",
+            "role": "Agile Scrum Master",
+            "name": "Charlie Brown",
+            "email": "charlie.brown@example.com",
+            "address": "789 Pine Ln, New York, NY 10001"
+        },
+        {
+            "id": 4,
+            "job": "Designer",
+            "role": "UI/UX Designer",
+            "name": "Diana Smith",
+            "email": "diana.smith@example.com",
+            "address": "1011 Maple Rd, Los Angeles, CA 90001"
+        },
+        {
+            "id": 5,
+            "job": "Marketing Specialist",
+            "role": "Content Marketing Manager",
+            "name": "Eric Jones",
+            "email": "eric.jones@example.com",
+            "address": "1213 Birch St, Chicago, IL 60601"
+        },
+        {
+            "id": 6,
+            "job": "Sales Manager",
+            "role": "Account Executive",
+            "name": "Fiona Wilson",
+            "email": "fiona.wilson@example.com",
+            "address": "1415 Cedar Ave, Houston, TX 77001"
+        },
+        {
+            "id": 7,
+            "job": "HR Manager",
+            "role": "Recruitment Specialist",
+            "name": "George Davis",
+            "email": "george.davis@example.com",
+            "address": "1617 Willow Ln, Phoenix, AZ 85001"
+        },
+        {
+            "id": 8,
+            "job": "Finance Analyst",
+            "role": "Budget Analyst",
+            "name": "Helen Garcia",
+            "email": "helen.garcia@example.com",
+            "address": "1819 Oak Dr, San Antonio, TX 78201"
+        },
+        {
+            "id": 9,
+            "job": "Operations Manager",
+            "role": "Logistics Coordinator",
+            "name": "Ian Miller",
+            "email": "ian.miller@example.com",
+            "address": "2021 Pine Ave, San Diego, CA 92101"
+        },
+        {
+            "id": 10,
+            "job": "Customer Support Representative",
+            "role": "Technical Support Agent",
+            "name": "Jasmine Rodriguez",
+            "email": "jasmine.rodriguez@example.com",
+            "address": "2223 Birch Ln, Dallas, TX 75201"
+        }
+    ]
+}
+const students = {
+    "students": [
+        {
+            "id": 1,
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": 18,
+            "grade": 12,
+            "major": "Computer Science"
+        },
+        {
+            "id": 2,
+            "firstName": "Jane",
+            "lastName": "Smith",
+            "age": 17,
+            "grade": 11,
+            "major": "Biology"
+        },
+        {
+            "id": 3,
+            "firstName": "David",
+            "lastName": "Brown",
+            "age": 19,
+            "grade": 12,
+            "major": "Mathematics"
+        },
+        {
+            "id": 4,
+            "firstName": "Emily",
+            "lastName": "Wilson",
+            "age": 16,
+            "grade": 10,
+            "major": "English Literature"
+        },
+        {
+            "id": 5,
+            "firstName": "Michael",
+            "lastName": "Jones",
+            "age": 18,
+            "grade": 12,
+            "major": "History"
+        },
+        {
+            "id": 6,
+            "firstName": "Sarah",
+            "lastName": "Garcia",
+            "age": 17,
+            "grade": 11,
+            "major": "Art"
+        },
+        {
+            "id": 7,
+            "firstName": "James",
+            "lastName": "Miller",
+            "age": 19,
+            "grade": 12,
+            "major": "Physics"
+        },
+        {
+            "id": 8,
+            "firstName": "Olivia",
+            "lastName": "Davis",
+            "age": 16,
+            "grade": 10,
+            "major": "Music"
+        },
+        {
+            "id": 9,
+            "firstName": "Daniel",
+            "lastName": "Rodriguez",
+            "age": 18,
+            "grade": 12,
+            "major": "Psychology"
+        },
+        {
+            "id": 10,
+            "firstName": "Sophia",
+            "lastName": "Martinez",
+            "age": 17,
+            "grade": 11,
+            "major": "Chemistry"
         }
     ]
 }
