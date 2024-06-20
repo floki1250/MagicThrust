@@ -45,7 +45,7 @@
                 class="bg-gray-50 dark:bg-gray-800 border dark:border-gray-900 border-gray-100 p-4 rounded-xl text-md text-left font-RaMono text-gray-600 dark:text-gray-50 my-4">
                 <h2>Json Examples :</h2>
 
-                <div class="grid gap-4 text-left grid-flow-row grow grid-cols-2 ">
+                <div class="grid gap-4 text-left grid-flow-row grow grid-cols-4 ">
                     <button @click="overwriteData(products)"
                         class="hover:text-indigo-500 rounded-full  border-2 hover:border-indigo-400 border-transparent p-2">Products</button>
                     <button @click="overwriteData(users)"
@@ -56,14 +56,23 @@
                         class="hover:text-[#c980c9] rounded-full  border-2 hover:border-[#c980c9] border-transparent p-2">students</button>
                 </div>
             </div>
-            <div>
+            <div class="flex gap-4 ">
                 <button @click="createServer()"
                     class="flex justify-start hover:shadow-lg w-fit rounded-full bg-gray-50 dark:bg-gray-800  font-semibold text-gray-400 hover:text-amber-500 border-2 border-gray-50 dark:border-gray-900 dark:hover:border-amber-500 hover:border-amber-500  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out">
-                    <div class="flex gap-2">
+                    <div class="flex gap-2 justify-center items-center">
                         <UIcon name="i-heroicons-rocket-launch-solid" class="text-xl  pt-4" />
                         <span>Create Server</span>
                     </div>
                 </button>
+
+
+                <div class="px-4 py-2 bg-gray-50  rounded-full w-fit dark:bg-gray-800" v-if="serverCode">
+                    <p class="text-md  text-left font-RaMono text-gray-600 dark:text-gray-50"> Server Code :
+                        <span
+                            class="font-bold  bg-gradient-to-r from-[#467fff] to-[#c980c9] bg-clip-text text-transparent">
+                            {{ serverCode }} </span>
+                    </p>
+                </div>
             </div>
         </div>
         <div class=" h-full flex text-left justify-center items-center lg:w-1/2">
@@ -86,7 +95,7 @@ import MonacoEditor from 'vue-monaco-cdn'
 const loading = ref(false)
 const data = ref()
 const products = {
-    "products": [
+    "jsonData": [
         {
             "id": 1,
             "title": "Sony WH-1000XM4 Wireless Headphones",
@@ -160,7 +169,7 @@ const products = {
     ]
 }
 const users = {
-    "users": [
+    "jsonData": [
         {
             "id": 1,
             "name": "Alice Johnson",
@@ -224,7 +233,7 @@ const users = {
     ]
 }
 const employees = {
-    "employees": [
+    "jsonData": [
         {
             "id": 1,
             "job": "Software Engineer",
@@ -308,7 +317,7 @@ const employees = {
     ]
 }
 const students = {
-    "students": [
+    "jsonData": [
         {
             "id": 1,
             "firstName": "John",
@@ -393,7 +402,7 @@ const students = {
 }
 const editor = ref();
 const prompt = ref("");
-
+const serverCode = ref("");
 
 
 function overwriteData (json: any) {
@@ -413,14 +422,14 @@ async function generateJson () {
     loading.value = false
 }
 async function createServer () {
-    const serverCode = await $fetch("/api/createServer", {
+    serverCode.value = await $fetch("/api/createServer", {
         method: "POST",
         body: {
             data: data.value
         }
     })
-    console.log(serverCode)
-    await navigateTo(`/api/${serverCode}`, {
+    console.log(serverCode.value)
+    await navigateTo(`/api/${serverCode.value}`, {
         external: false,
         open: {
             target: '_blank',

@@ -16,16 +16,30 @@
                 manage a fake
                 REST API. With AI-generated JSON data, you can get everything set up with ease.</p>
         </div>
-        <div>
+        <div class="flex gap-4 ">
             <div
                 class="hover:-translate-y-1 shadow-lg bg-gradient-to-r from-[#c980c9] to-[#467fff] border-1 border-gray-100 w-fit p-0.5 rounded-full  transition-all duration-500 ease-in-out">
                 <div
                     class="flex gap-2 w-fit rounded-full bg-gray-50 dark:bg-gray-900  font-semibold  text-black dark:text-white  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out group">
 
                     <NuxtLink to="/create">
-                        <div to="/create" class=" flex gap-2">
+                        <div class=" flex gap-2">
                             <UIcon name="i-heroicons-rocket-launch-solid" class="text-xl  pt-4" />
                             <span>Get Started</span>
+                        </div>
+                    </NuxtLink>
+
+                </div>
+            </div>
+            <div
+                class="hover:-translate-y-1  bg-gradient-to-r from-[#ffd000] to-[#467fff] border-1 border-gray-100 w-fit p-0.5 rounded-full  transition-all duration-500 ease-in-out">
+                <div
+                    class="flex gap-2 w-fit rounded-full bg-gray-50 dark:bg-gray-900  font-semibold  text-black dark:text-white  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out group">
+
+                    <NuxtLink to="/docs">
+                        <div class=" flex gap-2">
+                            <UIcon name="i-heroicons-book-open-solid" class="text-xl  pt-4" />
+                            <span>Learn More</span>
                         </div>
                     </NuxtLink>
 
