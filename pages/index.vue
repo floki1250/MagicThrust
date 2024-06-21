@@ -31,21 +31,13 @@
 
                 </div>
             </div>
-            <div
-                class="hover:-translate-y-1  bg-gradient-to-r from-[#ffd000] to-[#467fff] border-1 border-gray-100 w-fit p-0.5 rounded-full  transition-all duration-500 ease-in-out">
-                <div
-                    class="flex gap-2 w-fit rounded-full bg-gray-50 dark:bg-gray-900  font-semibold  text-black dark:text-white  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out group">
-
-                    <NuxtLink to="/docs">
-                        <div class=" flex gap-2">
-                            <UIcon name="i-heroicons-book-open-solid" class="text-xl  pt-4" />
-                            <span>Learn More</span>
-                        </div>
-                    </NuxtLink>
-
+            <NuxtLink to="/docs"
+                class="hover:-translate-y-1 flex justify-start hover:shadow-lg w-fit rounded-full bg-gray-50 dark:bg-gray-800  font-semibold text-gray-400 hover:text-indigo-700 border-2 border-gray-50 dark:border-gray-900 dark:hover:border-indigo-700 hover:border-indigo-700  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out">
+                <div class="flex gap-2 justify-center items-center">
+                    <UIcon name="i-heroicons-document-solid" class="text-xl  pt-4" />
+                    <span>Learn More</span>
                 </div>
-            </div>
-
+            </NuxtLink>
         </div>
         <br>
         <br>

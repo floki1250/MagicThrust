@@ -7,7 +7,8 @@ export default defineEventHandler(async (event) => {
   )) || { jsonData: [] }; // get data
   const body = await readBody(event);
   const id = body.id;
-  data.jsonData.push(body);
-  await kv.set(code, body.data, { ex: 60 * 60 * 24 * 15 });
+  data.jsonData = data.jsonData.filter((item) => item.id !== id);
+  console.log(data.jsonData);
+  await kv.set(code, data.jsonData, { ex: 60 * 60 * 24 * 15 });
   return data;
 });
