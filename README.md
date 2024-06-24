@@ -1,8 +1,6 @@
-![Nuxt](https://img.shields.io/badge/Nuxt.js-00DC82.svg?style=for-the-badge&logo=nuxtdotjs&logoColor=white)
-																					![magicthrust](https://github.com/floki1250/MagicThrust/assets/37814393/cf9ac2a6-f99c-4d3d-b52c-aaa48209dcfd)
+![Nuxt](https://img.shields.io/badge/Nuxt.js-00DC82.svg?style=for-the-badge&logo=nuxtdotjs&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![magicthrust](https://github.com/floki1250/MagicThrust/assets/37814393/cf9ac2a6-f99c-4d3d-b52c-aaa48209dcfd)
 # MagicThrust
-
-
 Create fake servers and generate JSON data effortlessly with AI assistance. 🚀✨
 
 # Overview
