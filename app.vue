@@ -1,20 +1,25 @@
 <template>
   <div>
     <NuxtLayout>
-      <NuxtLoadingIndicator color="#9cf21a" />
-      <header class="sticky top-0 z-50  w-full  bg-background/90 backdrop-blur  p-2">
+      <NuxtLoadingIndicator color="#6366f1" />
+      <header class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur p-2">
         <div class="flex justify-between items-center h-12">
-          <div class=" rounded-full">
+          <div class="rounded-full">
             <NuxtLink to="/" class="text-3xl font-bold">
               <img src="/logo.svg" class="w-12 h-12" />
             </NuxtLink>
           </div>
 
           <div class="flex justify-center gap-4">
-            <div
-              @click="$colorMode.preference == 'light' ? $colorMode.preference = 'dark' : $colorMode.preference = 'light'">
-              <UIcon class="text-2xl hover:text-indigo-500"
-                :name="$colorMode.preference == 'light' ? 'i-heroicons-sun' : 'i-heroicons-moon'" />
+            <div @click="
+              $colorMode.preference == 'light'
+                ? ($colorMode.preference = 'dark')
+                : ($colorMode.preference = 'light')
+              ">
+              <UIcon class="text-2xl hover:text-indigo-500" :name="$colorMode.preference == 'light'
+                  ? 'i-heroicons-sun'
+                  : 'i-heroicons-moon'
+                " />
             </div>
             <div>
               <NuxtLink to="https://www.buymeacoffee.com/AdamDardour" class="text-2xl hover:text-[#ca98ca]"
@@ -70,7 +75,6 @@
               </NuxtLink>
             </div>
           </div>
-
         </div>
       </header>
       <UContainer class="pt-4">
@@ -79,5 +83,4 @@
       <UNotifications />
     </NuxtLayout>
   </div>
-
 </template>
