@@ -45,7 +45,7 @@
                 class="bg-gray-50 dark:bg-gray-800 border dark:border-gray-900 border-gray-100 p-4 rounded-xl text-md text-left font-RaMono text-gray-600 dark:text-gray-50 my-4">
                 <h2>Json Examples :</h2>
 
-                <div class="grid gap-4 text-left grid-flow-row grow grid-cols-4 ">
+                <div class="grid gap-4 text-left grid-flow-row grow grid-cols-2 lg:grid-cols-4 ">
                     <button @click="overwriteData(products)"
                         class="hover:text-indigo-500 rounded-full  border-2 hover:border-indigo-400 border-transparent p-2">Products</button>
                     <button @click="overwriteData(users)"
