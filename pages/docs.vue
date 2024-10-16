@@ -208,16 +208,3 @@
         </main>
     </div>
 </template>
-
-<script setup>
-// No specific script setup needed for this static documentation page
-</script>
-<style scoped>
-.blur-blob {
-    filter: blur(40px);
-    transition-duration: 2s;
-    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-    border-radius: 9999px;
-    z-index: -10;
-}
-</style>

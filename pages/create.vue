@@ -1,97 +1,109 @@
 <template>
-    <div class="flex gap-4 justify-between items-center text-center flex-col lg:flex-row ">
-        <div class="lg:w-1/2">
-            <div>
-                <h1 class="text-3xl lg:text-4xl text-left font-RaMono text-gray-600 dark:text-gray-50">Describe Your
-                    Data and
-                    <br><span
-                        class="font-bold  bg-gradient-to-r from-[#467fff] to-[#c980c9] bg-clip-text text-transparent">
-                        Gemini AI✨ </span> Will Generate JSON for You
-                </h1>
-                <br>
-                <div class="flex gap-4">
-                    <div
-                        class="hover:shadow-lg focus:bg-gradient-to-tr hover:bg-gradient-to-tr from-[#c980c9] to-[#467fff] w-full p-0.5 rounded-full transition-all duration-500 ease-in-out text-gray-400 hover:text-gray-700 hover:dark:text-white">
-                        <div class="p-2 flex gap-2 bg-gray-50 lg:min-w-96 w-full rounded-full  dark:bg-gray-800">
-                            <UIcon name="i-heroicons-sparkles-solid" class="text-2xl " />
-                            <input type="text" placeholder="Example: Generate a 10 random users with avatars"
-                                v-model="prompt" :disabled="loading"
-                                class="  bg-gray-50 dark:bg-gray-800 text-gray-950 dark:text-gray-400 rounded-full w-full  outline-none pl-2">
+    <div>
+        <div class="flex gap-4 justify-between items-center text-center flex-col lg:flex-row ">
+            <div class="lg:w-1/2">
+                <div>
+                    <h1 class="text-3xl lg:text-4xl text-left font-RaMono text-gray-600 dark:text-gray-50">Describe Your
+                        Data and
+                        <br><span
+                            class="font-bold  bg-gradient-to-r from-[#467fff] to-[#c980c9] bg-clip-text text-transparent">
+                            Gemini AI✨ </span> Will Generate JSON for You
+                    </h1>
+                    <br>
+                    <div class="flex gap-4">
+                        <div
+                            class="hover:shadow-lg focus:bg-gradient-to-tr hover:bg-gradient-to-tr from-[#c980c9] to-[#467fff] w-full p-0.5 rounded-full transition-all duration-500 ease-in-out text-gray-400 hover:text-gray-700 hover:dark:text-white">
+                            <div class="p-2 flex gap-2 bg-gray-50 lg:min-w-96 w-full rounded-full  dark:bg-gray-800">
+                                <UIcon name="i-heroicons-sparkles-solid" class="text-2xl " />
+                                <input type="text" placeholder="Example: Generate a 10 random users with avatars"
+                                    v-model="prompt" :disabled="loading"
+                                    class="  bg-gray-50 dark:bg-gray-800 text-gray-950 dark:text-gray-400 rounded-full w-full  outline-none pl-2">
+                            </div>
+
                         </div>
 
-                    </div>
-
-                    <div
-                        class="hover:shadow-lg hover:bg-gradient-to-r from-[#c980c9] to-[#467fff] border-1 border-gray-100 w-fit p-0.5 rounded-full  transition-all duration-500 ease-in-out">
                         <div
-                            class="flex gap-2 w-fit rounded-full bg-gray-50 dark:bg-gray-800  font-semibold text-gray-400 hover:text-black hover:dark:text-white  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out group">
+                            class="hover:shadow-lg hover:bg-gradient-to-r from-[#c980c9] to-[#467fff] border-1 border-gray-100 w-fit p-0.5 rounded-full  transition-all duration-500 ease-in-out">
+                            <div
+                                class="flex gap-2 w-fit rounded-full bg-gray-50 dark:bg-gray-800  font-semibold text-gray-400 hover:text-black hover:dark:text-white  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out group">
 
-                            <button @click="generateJson()" v-if="!loading">
-                                <div class="flex gap-2">
-                                    <UIcon name="i-heroicons-bolt-solid" class="text-xl  pt-4" />
-                                    <span>Generate
-                                        Json</span>
+                                <button @click="generateJson()" v-if="!loading">
+                                    <div class="flex gap-2">
+                                        <UIcon name="i-heroicons-bolt-solid" class="text-xl  pt-4" />
+                                        <span>Generate
+                                            Json</span>
+                                    </div>
+                                </button>
+                                <div v-else>
+                                    <Loader />
                                 </div>
-                            </button>
-                            <div v-else>
-                                <Loader />
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div
-                class="bg-gray-50 dark:bg-gray-800 border dark:border-gray-900 border-gray-100 p-4 rounded-xl text-md text-left font-RaMono text-gray-600 dark:text-gray-50 my-4">
-                <h2>Json Examples :</h2>
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 border dark:border-gray-900 border-gray-100 p-4 rounded-xl text-md text-left font-RaMono text-gray-600 dark:text-gray-50 my-4">
+                    <h2>Json Examples :</h2>
 
-                <div class="grid gap-4 text-left grid-flow-row grow grid-cols-2 lg:grid-cols-4 ">
-                    <button @click="overwriteData(products)"
-                        class="hover:text-indigo-500 rounded-full  border-2 hover:border-indigo-400 border-transparent p-2">Products</button>
-                    <button @click="overwriteData(users)"
-                        class="hover:text-[#c980c9] rounded-full  border-2 hover:border-[#c980c9] border-transparent p-2">Users</button>
-                    <button @click="overwriteData(employees)"
-                        class="hover:text-indigo-500 rounded-full  border-2 hover:border-indigo-400 border-transparent p-2">Employees</button>
-                    <button @click="overwriteData(students)"
-                        class="hover:text-[#c980c9] rounded-full  border-2 hover:border-[#c980c9] border-transparent p-2">students</button>
-                </div>
-            </div>
-            <div class="flex gap-4 ">
-                <button @click="createServer()"
-                    class="flex justify-start hover:shadow-lg w-fit rounded-full bg-gray-50 dark:bg-gray-800  font-semibold text-gray-400 hover:text-amber-500 border-2 border-gray-50 dark:border-gray-900 dark:hover:border-amber-500 hover:border-amber-500  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out">
-                    <div class="flex gap-2 justify-center items-center">
-                        <UIcon name="i-heroicons-rocket-launch-solid" class="text-xl  pt-4" />
-                        <span>Create Server</span>
+                    <div class="grid gap-4 text-left grid-flow-row grow grid-cols-2 lg:grid-cols-4 ">
+                        <button @click="overwriteData(products)"
+                            class="hover:text-indigo-500 rounded-full  border-2 hover:border-indigo-400 border-transparent p-2">Products</button>
+                        <button @click="overwriteData(users)"
+                            class="hover:text-[#c980c9] rounded-full  border-2 hover:border-[#c980c9] border-transparent p-2">Users</button>
+                        <button @click="overwriteData(employees)"
+                            class="hover:text-indigo-500 rounded-full  border-2 hover:border-indigo-400 border-transparent p-2">Employees</button>
+                        <button @click="overwriteData(students)"
+                            class="hover:text-[#c980c9] rounded-full  border-2 hover:border-[#c980c9] border-transparent p-2">students</button>
                     </div>
-                </button>
+                </div>
+                <div class="flex gap-4 ">
+                    <button @click="createServer()"
+                        class="flex justify-start hover:shadow-lg w-fit rounded-full bg-gray-50 dark:bg-gray-800  font-semibold text-gray-400 hover:text-amber-500 border-2 border-gray-50 dark:border-gray-900 dark:hover:border-amber-500 hover:border-amber-500  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out">
+                        <div class="flex gap-2 justify-center items-center">
+                            <UIcon name="i-heroicons-rocket-launch-solid" class="text-xl  pt-4" />
+                            <span>Create Server</span>
+                        </div>
+                    </button>
 
 
-                <div class="px-4 py-2 bg-gray-50  rounded-full w-fit dark:bg-gray-800" v-if="serverCode">
-                    <p class="text-md  text-left font-RaMono text-gray-600 dark:text-gray-50"> Server Code :
-                        <span
-                            class="font-bold  bg-gradient-to-r from-[#467fff] to-[#c980c9] bg-clip-text text-transparent">
-                            {{ serverCode }} </span>
-                    </p>
+                    <div class="px-4 py-2 bg-gray-50  rounded-full w-fit dark:bg-gray-800" v-if="serverCode">
+                        <p class="text-md  text-left font-RaMono text-gray-600 dark:text-gray-50"> Server Code :
+                            <span
+                                class="font-bold  bg-gradient-to-r from-[#467fff] to-[#c980c9] bg-clip-text text-transparent">
+                                {{ serverCode }} </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class=" h-full flex text-left justify-center items-center lg:w-1/2">
+                <div class=" shadow-2xl w-fit p-1 bg-gradient-to-r from-[#c980c9] to-[#467fff] rounded-lg">
+                    <div class="p-2 rounded-lg  bg-white dark:bg-[#1e1e1e] border border-white dark:border-gray-800">
+                        <ClientOnly>
+                            <monaco-editor ref="editor" class=" min-w-96 min-h-96 w-full" v-model="data" language="json"
+                                :options="{ theme: $colorMode.preference == 'light' ? 'vs' : 'vs-dark' }" />
+                        </ClientOnly>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class=" h-full flex text-left justify-center items-center lg:w-1/2">
-            <div class=" shadow-2xl w-fit p-1 bg-gradient-to-r from-[#c980c9] to-[#467fff] rounded-lg">
-                <div class="p-2 rounded-lg  bg-white dark:bg-[#1e1e1e] border border-white dark:border-gray-800">
-                    <ClientOnly>
-                        <monaco-editor ref="editor" class=" min-w-96 min-h-96 w-full" v-model="data" language="json"
-                            :options="{ theme: $colorMode.preference == 'light' ? 'vs' : 'vs-dark' }" />
-                    </ClientOnly>
-                </div>
+        <br>
+        <br>
+        <br>
+        <div class="relative  rounded-lg">
+            <div
+                class="blur-blob absolute top-52 left-1 md:top-20 md:left-50 lg:top-20 lg:left-4 bg-gradient-to-r from-[#467fff] dark:from-indigo-800 to-[#c980c9] dark:to-[#c980c9] w-60 h-60 md:w-80 md:h-80 sm:w-60 sm:h-60 lg:w-96 lg:h-96">
             </div>
+            <JsonDiagram :jsonData="dataDiagram" v-if="dataDiagram" />
         </div>
+
     </div>
 </template>
 <script setup lang="ts">
 // @ts-ignore
 import MonacoEditor from 'vue-monaco-cdn'
 
-
+const dataDiagram = ref({})
 const loading = ref(false)
 const data = ref()
 const products = {
@@ -407,6 +419,7 @@ const serverCode = ref("");
 
 function overwriteData (json: any) {
     editor.value.getMonaco().setValue(JSON.stringify(json, null, 2))
+    dataDiagram.value = json
 }
 
 async function generateJson () {

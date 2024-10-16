@@ -7,3 +7,11 @@
     font-weight: 900;
     font-style: normal;
 }
+
+.blur-blob {
+    filter: blur(40px);
+    transition-duration: 2s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    border-radius: 9999px;
+    z-index: -10;
+}

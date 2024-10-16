@@ -65,14 +65,3 @@
 
     </div>
 </template>
-
-<style scoped>
-.blur-blob {
-    filter: blur(40px);
-    transition-duration: 2s;
-    transition-timing-function: cubic-bezier(.075, .82, .165, 1);
-    border-radius: 9999px;
-    z-index: -10;
-
-}
-</style>
