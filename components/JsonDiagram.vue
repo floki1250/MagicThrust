@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { onMounted, watch } from "vue";
 import * as go from "gojs";
 
 // Props

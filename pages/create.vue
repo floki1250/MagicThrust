@@ -87,10 +87,8 @@
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <div class="relative  rounded-lg">
+
+        <div class="relative  rounded-lg mt-8">
             <div
                 class="blur-blob absolute top-52 left-1 md:top-20 md:left-50 lg:top-20 lg:left-4 bg-gradient-to-r from-[#467fff] dark:from-indigo-800 to-[#c980c9] dark:to-[#c980c9] w-60 h-60 md:w-80 md:h-80 sm:w-60 sm:h-60 lg:w-96 lg:h-96">
             </div>
@@ -102,10 +100,16 @@
 <script setup lang="ts">
 // @ts-ignore
 import MonacoEditor from 'vue-monaco-cdn'
+type jsonData = {
+    "jsonData": []
+}
 
-const dataDiagram = ref({})
+const dataDiagram = ref<jsonData>({
+    "jsonData": []
+})
 const loading = ref(false)
 const data = ref()
+const toast = useToast()
 const products = {
     "jsonData": [
         {
@@ -424,15 +428,25 @@ function overwriteData (json: any) {
 
 async function generateJson () {
     loading.value = true
-    const datares = await $fetch("/api/ai", {
-        method: "POST",
-        body: {
-            prompt: prompt.value + " in Json"
-        }
-    })
-    console.log(datares)
-    overwriteData(datares)
-    loading.value = false
+    try {
+        const datares = await $fetch("/api/ai", {
+            method: "POST",
+            body: {
+                prompt: prompt.value + " in Json"
+            }
+        })
+        overwriteData(datares)
+        loading.value = false
+    } catch (error) {
+        loading.value = false
+        toast.add({
+            id: 'Error',
+            title: 'Error.',
+            description: 'Server Error. Please try again later.',
+            icon: 'i-heroicons-exclamation-circle',
+            color: 'red',
+        })
+    }
 }
 async function createServer () {
     serverCode.value = await $fetch("/api/createServer", {

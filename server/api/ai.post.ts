@@ -3,7 +3,10 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
   const API_KEY = config.apiKey;
   if (!API_KEY) {
-    throw new Error("API_KEY is not defined");
+    throw createError({
+      statusCode: 500,
+      statusMessage: "API_KEY is not defined",
+    });
   }
 
   const body = await readBody(event);
