@@ -22,6 +22,7 @@ To get started with MagicThrust, follow these steps:
 - **AI JSON Generation:** Generate JSON data based on a simple text prompt.
 - **JSON Formatting:** Automatically format your JSON data for readability.
 - **Fake Server Creation:** Easily create a fake server with your JSON data.
+- **Data Diagram:** Visualizes your data effortlessly! ✨.
 
 # API
 
