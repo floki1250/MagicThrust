@@ -1,17 +1,15 @@
 <template>
     <div>
         <div
-            class=" blur-blob absolute top-52 left-1 md:top-20 md:left-50 lg:top-20 lg:left-4 2xl:top-40 2xl:left-10 bg-gradient-to-r from-[#467fff] dark:from-indigo-800 to-[#c980c9] dark:to-[#c980c9]  w-60 h-60 md:w-80 md:h-80 sm:w-60 sm:h-60 lg:w-96 lg:h-96 2xl:w-96 2xl:h-96">
+            class=" blur-blob absolute  top-3/4 left-1 md:top-20 md:left-50 lg:top-20 lg:left-4 2xl:top-40 2xl:left-10 bg-gradient-to-r from-[#467fff] dark:from-indigo-800 to-[#c980c9] dark:to-[#c980c9]  w-60 h-60 md:w-80 md:h-80 sm:w-60 sm:h-60 lg:w-96 lg:h-96 2xl:w-96 2xl:h-96">
         </div>
-        <div class="relative h-screen w-full flex flex-col justify-center items-center">
-
-
-            <div class=" px-8 mt-8 mb-1 2xl:mb-8">
+        <div class="relative h-screen w-full flex flex-col justify-center items-center ">
+            <div class=" px-8  mt-8 mb-2 2xl:mb-8">
                 <h1
                     class="font-montserrat text-6xl lg:text-6xl 2xl:text-8xl  h-28 font-bold  bg-gradient-to-r from-[#467fff] to-[#c980c9] bg-clip-text text-transparent">
                     MagicThrust </h1>
             </div>
-            <div class="w-3/4 flex justify-center flex-col items-center">
+            <div class="md:w-3/4 w-full  flex justify-center flex-col items-center">
                 <div class="text-2xl lg:text-2xl 2xl:text-5xl text-center font-bold mb-8 ">Your Backend Is Being
                     Lazy?
                 </div>
@@ -45,10 +43,10 @@
                     </div>
                 </NuxtLink>
             </div>
-            <div class="absolute bottom-0 mb-4 2xl:mb-20 left-0 right-0 mx-auto h-fit w-fit p-4">
-                <div class="grid grid-cols-3 gap-4 w-full text-sm ">
+            <div class="2xl:absolute bottom-3 md:mt-8 mb-4 2xl:mb-20 left-0 right-0 mx-auto h-fit w-full md:w-fit p-4 ">
+                <div class="grid md:grid-cols-3 gap-4 w-full text-sm ">
                     <div
-                        class="flex text-left max-w-60 p-4 bg-gray-50 hover:shadow-lg transition-shadow ease-linear duration-500 dark:bg-gray-800 dark:text-white rounded-xl">
+                        class="flex text-left md:max-w-60 p-4 bg-gray-50 hover:shadow-lg transition-shadow ease-linear duration-500 dark:bg-gray-800 dark:text-white rounded-xl">
                         <UIcon name="i-heroicons-code-bracket" class="hidden lg:block  lg:text-xl" />
                         <p class="ml-1">No Need Github Repo , Copy
                             & Paste your Json and start the
@@ -56,14 +54,14 @@
 
                     </div>
                     <div
-                        class="flex text-left p-4 max-w-60  bg-gray-50 hover:shadow-lg transition-shadow ease-linear duration-500 dark:bg-gray-800 dark:text-white rounded-xl">
+                        class="flex text-left p-4 md:max-w-60  bg-gray-50 hover:shadow-lg transition-shadow ease-linear duration-500 dark:bg-gray-800 dark:text-white rounded-xl">
                         <UIcon name="i-heroicons-sparkles" class="hidden lg:block  lg:text-xl" />
                         <p class="ml-1"> Powered By <span
                                 class="font-bold  bg-gradient-to-r from-[#467fff] to-[#c980c9] bg-clip-text text-transparent">
                                 Gemini AI✨ </span> to effortlessly generate JSON</p>
                     </div>
                     <div
-                        class="flex text-left max-w-60  p-4 bg-gray-50 hover:shadow-lg transition-shadow ease-linear duration-500 dark:bg-gray-800 dark:text-white rounded-xl">
+                        class="flex text-left md:max-w-60  p-4 bg-gray-50 hover:shadow-lg transition-shadow ease-linear duration-500 dark:bg-gray-800 dark:text-white rounded-xl">
                         <UIcon name="i-heroicons-heart" class="hidden lg:block  lg:text-xl" />
                         <p class="ml-1">Free To Use and Open
                             source</p>
