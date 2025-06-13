@@ -1,4 +1,5 @@
 export default defineEventHandler((event) => {
+  const { URL } = globalThis;
   const referer = event.node.req.headers.referer;
   const url = getRequestURL(event);
   const allowedReferer =
@@ -8,7 +9,16 @@ export default defineEventHandler((event) => {
 
   const securePaths = ["/api/createServer", "/api/ai"];
   if (securePaths.includes(url.pathname)) {
-    if (!referer || !referer.startsWith(allowedReferer)) {
+    const allowedHosts = process.env.NODE_ENV === "development"
+      ? ["localhost:3000"]
+      : ["magicthrust.vercel.app"];
+    let refererHost;
+    try {
+      refererHost = new URL(referer).host;
+    } catch {
+      throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+    }
+    if (!referer || !allowedHosts.includes(refererHost)) {
       throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
     }
   }
