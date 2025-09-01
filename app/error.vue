@@ -21,7 +21,7 @@ const handleError = () => clearError({ redirect: '/' })
 
                 <button @click="handleError">
                     <div class=" flex gap-2">
-                        <UIcon name="i-heroicons-home-solid" class="text-xl  pt-4" />
+                        <Icon name="i-heroicons-home-solid" class="text-xl  pt-4" />
                         <span>Go Back</span>
                     </div>
                 </button>

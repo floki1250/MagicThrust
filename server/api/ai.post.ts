@@ -1,7 +1,8 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { useStorage } from '@vueuse/core'
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
-  const API_KEY = config.apiKey;
+  const API_KEY = useStorage('API_KEY', '').value;
   if (!API_KEY) {
     throw createError({
       statusCode: 500,
@@ -15,7 +16,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const genAI = new GoogleGenerativeAI(API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   try {
     const result = await model.generateContent(body.prompt);

@@ -1,8 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
+
   app: {
     head: {
       title: "MagicThrust",
+          
     },
   },
   nitro: {
@@ -18,10 +21,14 @@ export default defineNuxtConfig({
   routeRules: {
     "/api/*": { cors: true },
   },
-  css: ["@/assets/main.scss"],
-  colorMode: {
-    preference: "light", // default value of $colorMode.preference
-  },
+  css: ["@/assets/main.css"],
+
   devtools: { enabled: false },
-  modules: ["@nuxt/ui"],
+   vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
+  modules: ["@nuxt/icon", "@vueuse/nuxt"],
+
 });
