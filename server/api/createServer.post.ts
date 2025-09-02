@@ -1,4 +1,5 @@
-import { kv } from "@vercel/kv";
+import { defineEventHandler } from "h3";
+import { Redis } from "@upstash/redis";
 function generateRandomString(): string {
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let result = "";
@@ -12,6 +13,7 @@ export default defineEventHandler(async (event) => {
   const storage = useStorage("data");
   let exists: boolean = false;
   let serverCode: string;
+  const kv = Redis.fromEnv();
   do {
     serverCode = "MagicThrust_" + generateRandomString();
     exists = (await storage.getItem(serverCode)) !== null;

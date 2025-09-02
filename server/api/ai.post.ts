@@ -1,8 +1,8 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useStorage } from '@vueuse/core'
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig(event);
-  const API_KEY = useStorage('API_KEY', '').value;
+
+  const API_KEY = useStorage('apiKey', '').value;
   if (!API_KEY) {
     throw createError({
       statusCode: 500,

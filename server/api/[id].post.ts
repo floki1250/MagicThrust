@@ -1,12 +1,13 @@
-import { kv } from "@vercel/kv";
+import { defineEventHandler } from "h3";
+import { Redis } from "@upstash/redis";
 export default defineEventHandler(async (event) => {
+  const kv = Redis.fromEnv();
   const code = event.context.params?.id as string;
   const storage = useStorage("data");
-  let data: { jsonData: any[] } = (await storage.getItem(
-    code ? code.toString() : ""
-  )) || { jsonData: [] }; // get data
+  let data = (await storage.getItem(code ? code.toString() : "")) as JSON;
   const body = await readBody(event);
-  data.jsonData.push(body.data);
-  await kv.set(code, body.data, { ex: 60 * 60 * 24 * 15 });
+  
+  console.log(body)
+  await kv.set(code, body, { ex: 60 * 60 * 24 * 15 });
   return data;
 });

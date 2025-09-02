@@ -9,7 +9,7 @@
         <div class="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden">
             <div class=" px-8  mt-8 mb-2 2xl:mb-8">
                 <h1
-                    class="font-montserrat text-6xl lg:text-6xl 2xl:text-8xl  h-28 font-bold backdrop-blur-sm  shadow-gradient-to-r from-[#003fd1] via-50% via-[#FF2100] to-[#ff9500]  bg-clip-text text-base-content">
+                    class="poppins text-6xl lg:text-6xl 2xl:text-8xl  h-28 font-bold backdrop-blur-sm  shadow-gradient-to-r from-[#003fd1] via-50% via-[#FF2100] to-[#ff9500]  bg-clip-text text-base-content">
                     <span
                         class="font-bold bg-white transition-all duration-300 hover:bg-gradient-to-r from-[#003fd1]  to-[#fff] bg-clip-text text-transparent">
                         MagicThrust✨ </span>
@@ -25,25 +25,25 @@
             </div>
             <div class="flex gap-4 my-8">
                 <button
-                    class="hover:-translate-y-1 transition-all duration-300 w-40 flex justify-center items-center ease-in-out bg-black/80 px-4 rounded-2xl shadow-2xl shadow-indigo-500/50 hover:shadow-blue-500  py-2">
+                    class=" transition-all duration-300 w-40 flex justify-center items-center ease-in-out bg-black/80 px-4 rounded-2xl border-2 border-base-300 hover:border-[#003fd1]   hover:shadow-2xl shadow-[#003fd1] py-2">
                     <NuxtLink to="/create">
-                        <div class=" flex justify-center gap-2">
+                        <div class=" flex items-center gap-2">
                             <Icon name="i-heroicons-rocket-launch-solid" class="text-xl  " />
                             <span>Get Started</span>
                         </div>
                     </NuxtLink>
                 </button>
                 <button
-                    class="hover:-translate-y-1 transition-all duration-300 w-40 flex justify-center items-center ease-in-out bg-black/80 px-4 rounded-2xl shadow-2xl shadow-indigo-500/50 hover:shadow-blue-500  py-2">
+                    class=" transition-all duration-300 w-40 flex justify-center items-center ease-in-out bg-black/80 px-4 rounded-2xl border-2 border-base-300 hover:border-[#003fd1]   hover:shadow-2xl shadow-[#003fd1]  py-2">
                     <NuxtLink to="/docs">
-                        <div class=" flex justify-center gap-2">
+                        <div class=" flex items-center justify-center gap-2">
                             <Icon name="i-heroicons-book-open" class="text-xl  " />
                             <span>Learn More</span>
                         </div>
                     </NuxtLink>
                 </button>
             </div>
-            <div class="absolute bottom-1 left-0 right-0 mx-auto h-fit w-full md:w-fit p-4 ">
+            <div class="absolute bottom-1 left-0 right-0 mx-auto h-fit w-full md:w-fit p-4 poppins">
                 <div class="grid md:grid-cols-3 gap-4 w-full text-sm ">
                     <div
                         class="flex text-left md:max-w-96 p-4 bg-base-100/80 hover:shadow-lg transition-shadow ease-linear duration-500  backdrop-blur-sm  rounded-xl">

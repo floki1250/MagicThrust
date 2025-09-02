@@ -2,7 +2,7 @@
     <div
         class="shadow-xl border-1 border-base-300 py-2 px-4 rounded-lg w-full h-full bg-base-100/50 dark:bg-black/10 backdrop-blur-xl  ">
         <button @click="refreshDiagram"
-            class="flex justify-start hover:shadow-lg w-fit rounded-full bg-base-100 dark:bg-gray-800  font-semibold text-base-content hover:text-blue-500 border-2 border-base-200  px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out">
+            class="flex justify-start border-2 border-base-300 hover:border-[#003fd1]   hover:shadow-2xl shadow-[#003fd1] w-fit rounded-full bg-base-100  font-semibold text-base-content   px-4 py-2  whitespace-nowrap transition-all duration-500 ease-in-out">
             <div class="flex gap-2 justify-center items-center">
                 <Icon name="i-heroicons-arrow-path-solid" class="text-xl  pt-4" />
                 <span>Refresh</span>

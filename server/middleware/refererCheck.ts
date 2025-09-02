@@ -1,3 +1,4 @@
+import { createError, defineEventHandler, getRequestURL } from "h3";
 export default defineEventHandler((event) => {
   const { URL } = globalThis;
   const referer = event.node.req.headers.referer;
@@ -14,7 +15,8 @@ export default defineEventHandler((event) => {
       : ["magicthrust.vercel.app"];
     let refererHost;
     try {
-      refererHost = new URL(referer).host;
+      if (!referer) throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+      refererHost = new URL(referer.toString()).host;
     } catch {
       throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
     }

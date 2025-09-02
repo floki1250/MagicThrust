@@ -1,10 +1,16 @@
-import { kv } from "@vercel/kv";
+import { defineEventHandler } from "h3";
+import { Redis } from "@upstash/redis";
 export default defineEventHandler(async (event) => {
   const code = event.context.params?.id as string;
   const storage = useStorage("data");
-  let data: { jsonData: any[] } = (await storage.getItem(
-    code ? code.toString() : ""
-  )) || { jsonData: [] }; // get data
+  const kv = Redis.fromEnv();
+  const rawData = await storage.getItem(code ? code.toString() : "");
+  let data: { jsonData: any[] };
+  if (rawData && typeof rawData === "object" && Array.isArray((rawData as any).jsonData)) {
+    data = rawData as { jsonData: any[] };
+  } else {
+    data = { jsonData: [] };
+  }
   const body = await readBody(event);
   // replace existing data item where id matches
   const existedData = data.jsonData;

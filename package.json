@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@iconify-json/heroicons": "^1.2.2",
     "@nuxt/devtools": "^2.6.2",
     "@nuxt/icon": "2.0.0",
     "@vueuse/nuxt": "13.8.0",
@@ -20,6 +21,7 @@
   "dependencies": {
     "@google/generative-ai": "^0.13.0",
     "@tailwindcss/vite": "^4.1.12",
+    "@upstash/redis": "^1.35.3",
     "@vercel/kv": "^1.0.1",
     "gojs": "^3.0.12",
     "ogl": "^1.0.11",

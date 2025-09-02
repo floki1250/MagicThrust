@@ -132,7 +132,7 @@
 
                 <section id="contact">
                     <h2 class="text-2xl font-semibold mb-4">Contact</h2>
-                    <p class="leading-relaxed">
+                    <div class="leading-relaxed">
                         If you have any questions or need further assistance, feel free to reach out to
                         us at :
                     <div class="flex gap-4 my-2">
@@ -172,7 +172,7 @@
                         </NuxtLink>
                     </div>
 
-                    </p>
+                    </div>
                 </section>
             </main>
         </div>
