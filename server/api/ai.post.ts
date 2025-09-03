@@ -1,20 +1,17 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { useStorage } from '@vueuse/core'
-export default defineEventHandler(async (event) => {
 
-  const API_KEY = useStorage('apiKey', '').value;
-  if (!API_KEY) {
+export default defineEventHandler(async (event) => {
+  const body = await readBody(event);
+  if (!body || !body.apiKey) {
     throw createError({
       statusCode: 500,
       statusMessage: "API_KEY is not defined",
     });
   }
-
-  const body = await readBody(event);
+  const API_KEY = body.apiKey;
   if (!body || !body.prompt) {
     throw new Error("Invalid request body");
   }
-
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 

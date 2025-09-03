@@ -26,17 +26,18 @@
                             class="border-2 border-base-300 hover:border-[#003fd1]   hover:shadow-2xl shadow-[#003fd1] hover:bg-gradient-to-r from-[#003fd1]  to-[#fff] w-fit p-0.5 rounded-full  transition-all duration-300 ease-in-out">
                             <div
                                 class="flex gap-2 w-fit rounded-full bg-base-200  font-semibold   px-4 py-2  whitespace-nowrap transition-all duration-300 ease-in-out group">
-
-                                <button @click="generateJson()" v-if="!loading">
-                                    <div class="flex items-center gap-2">
-                                        <Icon name="i-heroicons-bolt-solid" class="text-xl  pt-4" />
-                                        <span>Generate
-                                            Json</span>
+                                <Transition name="fade">
+                                    <button :disabled="!prompt" @click="generateJson()" v-if="!loading">
+                                        <div class="flex items-center gap-2">
+                                            <Icon name="i-heroicons-bolt-solid" class="text-xl  pt-4" />
+                                            <span>Generate
+                                                Json</span>
+                                        </div>
+                                    </button>
+                                    <div v-else>
+                                        <Loader />
                                     </div>
-                                </button>
-                                <div v-else>
-                                    <Loader />
-                                </div>
+                                </Transition>
                             </div>
                         </div>
                     </div>
@@ -98,12 +99,13 @@
     </div>
 </template>
 <script setup lang="ts">
+import { useStorage } from '@vueuse/core'
 // @ts-ignore
 import MonacoEditor from 'vue-monaco-cdn'
 type jsonData = {
     "jsonData": []
 }
-
+const apiKey = useStorage('apiKey', '')
 const dataDiagram = ref<jsonData>({
     "jsonData": []
 })
@@ -432,7 +434,8 @@ async function generateJson() {
         const datares = await $fetch("/api/ai", {
             method: "POST",
             body: {
-                prompt: prompt.value + " in Json"
+                prompt: prompt.value + " in Json",
+                apiKey: apiKey.value
             }
         })
         overwriteData(datares)
