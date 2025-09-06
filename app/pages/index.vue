@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen w-full overflow-hidden">
+    <div class="h-svh md:min-h-screen w-full overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden">
             <Prism animation-type="rotate" :time-scale="0.5" :height="3.5" :base-width="5.5" :scale="3.6" :hue-shift="0"
                 :color-frequency="1" :noise="0" :glow="1" />
@@ -48,8 +48,8 @@
 
             <!-- Feature Cards Section -->
             <div
-                class="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-0 right-0 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 poppins">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 w-full text-sm sm:text-base">
+                class="hidden md:block absolute bottom-2  md:bottom-8 left-0 right-0 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 poppins">
+                <div class="grid grid-cols-3 md:grid-cols-3 gap-3 sm:gap-4 w-full text-sm sm:text-base">
                     <div
                         class="flex flex-col sm:flex-row text-left p-3 sm:p-4 bg-base-100/80 hover:shadow-lg transition-shadow ease-linear duration-500 backdrop-blur-sm rounded-xl">
                         <Icon name="i-heroicons-code-bracket"

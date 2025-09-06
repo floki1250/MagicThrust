@@ -13,7 +13,8 @@
 
 
                     <div>
-                        <NuxtLink to="https://github.com/floki1250" class="btn hover:text-[#003fd1]" target="_blank">
+                        <NuxtLink to="https://github.com/floki1250/MagicThrust" class="btn hover:text-[#003fd1]"
+                            target="_blank">
                             <span class="text-xl">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24"><!-- Icon from Material Design Icons by Pictogrammers - https://github.com/Templarian/MaterialDesign/blob/master/LICENSE -->
@@ -24,8 +25,7 @@
                         </NuxtLink>
                     </div>
                     <div>
-                        <NuxtLink to="https://www.buymeacoffee.com/AdamDardour" class="btn hover:text-[#003fd1]"
-                            target="_blank">
+                        <NuxtLink to="https://adamdardour.dev" class="btn hover:text-[#003fd1]" target="_blank">
                             <Icon name="i-heroicons-cursor-arrow-ripple-16-solid" class="text-xl" />
                         </NuxtLink>
                     </div>
